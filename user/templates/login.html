@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'connection.css' %}">
+
+{% if registration %}
+<p class="red">Votre inscription est terminée, veuillez-vous connecter</p>
+{% endif %}
+
+<div class="connection">
+    <div class="connection-registartion">
+	    <h1>Inscrivez-vous maintenant</h1>
+		<button class="buttom" onclick="window.location.href='{% url 'user:registration' %}'"> S'inscrire </button>
+    </div>
+
+
+    <div class="connection-login">
+	    <h1>Connectez-vous</h1>
+        <form class="form" method="post">
+		   {% csrf_token %}
+		   {% for field in form %}
+			    <p>
+			    {{ field.label_tag }}<br>
+			    {{ field }}
+			    {% if field.help_text %}
+				    <br><small class="signup__help">{{ field.help_text }}</small>
+			    {% endif %}
+
+			    {% for error in field.errors %}
+				    <p class="signup__error">{{ error }}</p>
+			    {% endfor %}
+			    </p>
+			{% endfor %}
+		    <button class="buttom" type="submit">Soumettre</button>
+	    </form>
+    </div>
+</div>
+
+{% endblock %}

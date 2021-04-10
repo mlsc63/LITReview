@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'review',
     'user',
     'user_follows',
+
 ]
 
 MIDDLEWARE = [

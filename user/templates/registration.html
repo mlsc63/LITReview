@@ -1,7 +1,10 @@
 {% extends 'index.html' %}
+{% load static %}
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'registration.css' %}">
 
 <div class="inscription">
+	<h1 class="block">Inscrivez-vous</h1>
     <form method="post">
 		{% csrf_token %}
 		{% for field in form %}
@@ -17,7 +20,7 @@
 			{% endfor %}
 			</p>
 		{% endfor %}
-		<button class="btn" type="submit">Soumettre</button>
+		<button class="buttom" type="submit">Soumettre</button>
 	</form>
 </div>
 

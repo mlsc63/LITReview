@@ -1,0 +1,22 @@
+.connection {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 2em 2em 2em 2em;
+
+}
+.buttom{
+    width: 10em;
+    height: 2em;
+}
+.connection .connection-registartion{
+   display:flex;
+   flex-direction: column;
+}
+
+.connection .connection-registartion .buttom {
+    justify-content: center;
+    margin: auto;
+
+}
