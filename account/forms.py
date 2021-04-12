@@ -1,23 +1,17 @@
 from django.forms import ModelForm, TextInput, PasswordInput
 from .models import Account
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 
-class UserLogin(ModelForm):
+class UserLogin(AuthenticationForm):
     class Meta:
         model = Account
         fields = ["email", "password"]
-        widget = {
-            'email': TextInput(attrs={'class': 'form-control'}),
-            'password': PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control'}),
-        }
 
 
-class UserRegistration(ModelForm):
+
+class UserSignup(UserCreationForm):
     class Meta:
         model = Account
-        fields = ["email", "password"]
-        widget = {
-            'email': TextInput(attrs={'class': 'form-control'}),
-            'password': PasswordInput(attrs={'placeholder': 'Password', 'class': 'form-control', 'type': 'password'}),
+        fields = ['username', 'password1', 'password2']
 
-        }

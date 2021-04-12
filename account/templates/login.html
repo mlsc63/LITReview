@@ -18,20 +18,14 @@
     <div class="connection-login">
 	    <h1>Connectez-vous</h1>
         <form class="form" method="post">
-		   {% csrf_token %}
-		   {% for field in form %}
-			    <p>
-			    {{ field.label_tag }}<br>
-			    {{ field }}
-			    {% if field.help_text %}
-				    <br><small class="signup__help">{{ field.help_text }}</small>
-			    {% endif %}
+		    {{ form.username.label_tag }}<br>
+			{{ form.username }} <br>
+		    {{ form.password.label_tag }}<br>
+		    {{ form.password }} <br><br>
+		    {% for error in form.errors %}
+		        <p id="error"> {{ error }} n'est pas valide.</p>
+		    {% endfor %}
 
-			    {% for error in field.errors %}
-				    <p class="signup__error">{{ error }}</p>
-			    {% endfor %}
-			    </p>
-			{% endfor %}
 		    <button class="buttom" type="submit">Soumettre</button>
 	    </form>
     </div>
