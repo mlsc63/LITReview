@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ticket',
     'review',
-    'user',
     'user_follows',
+    'account',
 
 ]
 
@@ -79,12 +79,8 @@ WSGI_APPLICATION = 'LITReview.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'LITReview',
-        'USER': 'postgres',
-        'PASSWORD': 'Cocacola63',
-        'HOST': 'localhost',
-        'PORT': '',
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -130,7 +126,7 @@ STATICFILES_DIRS = [
     path.join(BASE_DIR, "static"),
     "static/",
 ]
-AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "account.Account"
 #########################################################################
 
 

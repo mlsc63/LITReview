@@ -1,10 +1,10 @@
 from django.forms import ModelForm, TextInput, PasswordInput
-from .models import User
+from .models import Account
 
 
 class UserLogin(ModelForm):
     class Meta:
-        model = User
+        model = Account
         fields = ["email", "password"]
         widget = {
             'email': TextInput(attrs={'class': 'form-control'}),
@@ -14,7 +14,7 @@ class UserLogin(ModelForm):
 
 class UserRegistration(ModelForm):
     class Meta:
-        model = User
+        model = Account
         fields = ["email", "password"]
         widget = {
             'email': TextInput(attrs={'class': 'form-control'}),
