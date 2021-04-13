@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'review',
     'user_follows',
     'account',
+    'home',
 
 ]
 

@@ -23,3 +23,24 @@ section {
 	border: solid black;
 }
 
+#nav{
+    position: relative;
+    margin-right: 0em;
+    margin-left:20em;
+}
+
+#nav ol {
+	list-style: none;
+	float: right;
+}
+
+#nav ol li{
+	float: left;
+	margin-left: 2em;
+	text-decoration: none;
+}
+#nav ol li a {
+	text-decoration: none;
+	font-size:  150%;
+	color: black;
+}

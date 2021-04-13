@@ -1,0 +1,22 @@
+#section {
+   display: flex;
+   justify-content: center;
+}
+
+#section_btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.buttom{
+   height: 3em;
+   margin-bottom: 2em;
+   margin-top: 2em;
+}
+.buttom1 {
+   margin-right: 15%;
+}
+.buttom2 {
+   margin-left: 15%;
+}

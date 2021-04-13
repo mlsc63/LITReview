@@ -11,6 +11,16 @@
 <body>
     <header>
         <h1>LITReview</h1>
+        {% if user.is_authenticated %}
+        <div id="nav">
+            <ol>
+                <li class="nav"><a href="#best_movie">Flux</a></li>
+                <li class="nav"><a href="#action">Posts</a></li>
+                <li class="nav"><a href="#action">Abonnements</a></li>
+                <li class="nav"><a href="{% url 'account:logout' %}">Se déconnecter</a></li>
+            </ol>
+        </div>
+        {% endif %}
     </header>
 
 

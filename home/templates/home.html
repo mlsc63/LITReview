@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
+<div id="section">
+    <div id="section_btn">
+        <button class="buttom buttom1" onclick="window.location.href='{% url 'account:signup' %}'"> Demander une critique </button>
+        <button class="buttom buttom2" onclick="window.location.href='{% url 'account:signup' %}'"> Créer une critique </button>
+    </div>
+</div>
+{% endblock %}

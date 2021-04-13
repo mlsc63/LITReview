@@ -4,10 +4,6 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'connection.css' %}">
 
-{% if registration %}
-<p class="red">Votre inscription est terminée, veuillez-vous connecter</p>
-{% endif %}
-
 <div class="connection">
     <div class="connection-registartion">
 	    <h1>Inscrivez-vous maintenant</h1>
@@ -18,6 +14,7 @@
     <div class="connection-login">
 	    <h1>Connectez-vous</h1>
         <form class="form" method="post">
+			{% csrf_token %}
 		    {{ form.username.label_tag }}<br>
 			{{ form.username }} <br>
 		    {{ form.password.label_tag }}<br>
