@@ -6,8 +6,23 @@
 
 
 
-<h1 class="block">ticket</h1>
+<h1 class="block">Crée un ticket</h1>
 
-</div>
+<form method="post">
+		{% csrf_token %}
+
+			{{ form.title.label_tag }}<br>
+			{{ form.title }} <br>
+		    {{ form.description.label_tag }}<br>
+		    {{ form.description }} <br>
+		    {{ form.image.label_tag }}<br>
+		    {{ form.image }} <br>
+		    {% for error in form.errors %}
+		        <p id="error"> {{ error }} n'est pas valide.</p>
+		    {% endfor %}
+
+
+		<button class="buttom" type="submit">Soumettre</button>
+</form>
 
 {% endblock %}
