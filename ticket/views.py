@@ -24,7 +24,6 @@ def ticket(request, ticket_id_edit=False, ticket_id_del=False ):
         ticket.delete()
         return redirect('/')
 
-
     # On créer un nouveau ticket
     if not ticket_id_edit and not ticket_id_del:
         form = TicketForm()
