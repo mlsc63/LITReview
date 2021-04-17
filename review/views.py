@@ -31,7 +31,7 @@ def add_review(request, review_id_edit=False, review_id_del=False):
         ticket_form = TicketForm()
         review_form = ReviewForm()
         if request.method == 'POST':
-            form1 = TicketForm(request.POST)
+            form1 = TicketForm(request.POST, request.FILES)
             form2 = ReviewForm(request.POST)
             if form1.is_valid() and form2.is_valid():
 

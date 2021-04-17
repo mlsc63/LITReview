@@ -7,5 +7,5 @@ class TicketForm(ModelForm):
         fields = ["title", "description", "image"]
         labels = {
             "title": "Titre",
-            "description": "Description",
+            "description": "Description"
         }

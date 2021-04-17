@@ -8,7 +8,7 @@
 
 <h1 class="block">Crée un ticket</h1>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 
 			{{ form.title.label_tag }}<br>

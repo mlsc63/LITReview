@@ -129,6 +129,8 @@ STATICFILES_DIRS = [
 ]
 AUTH_USER_MODEL = "account.Account"
 MEDIA_ROOT = path.join(BASE_DIR, "images")
+MEDIA_URL = '/images/'
+
 #########################################################################
 
 
