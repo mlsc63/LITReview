@@ -1,0 +1,19 @@
+{% if post.content_type == 'REVIEW' %}
+        <h2>Review</h2>
+        {% if user == post.user %}
+           <p>Vous avez écrit une review</p>
+        {% elif  user != post.user %}
+           <p>{{ post.user }} a écrit une review</p>
+        {% endif %}
+
+        <p>Titre :{{ post.headline }}</p>
+        <p>Commentaire: {{ post.body }}</p>
+        <p>Note: {{ post.rating }}</p>
+        <p>Date de création: {{ post.time_created }}</p>
+
+        {% if user == post.user %}
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
+            <br>
+        {% endif %}
+{% endif %}

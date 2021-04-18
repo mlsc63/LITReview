@@ -1,0 +1,20 @@
+{% for post in posts %}
+{% if post.content_type == 'TICKET' %}
+       <h2>Ticket</h2>
+        <p>{{ post.user }} a demandé une critique</p>
+        <p> Titre: {{ post.title}}</p>
+        <p>Commentaire :{{ post.description }}</p>
+
+        {% if post.image %}
+            <p><img src="{{post.image.url}}"  style="width: 200px; height: 200px;"></p>
+        {% endif %}
+
+        {{ post.time_created }}
+
+        {% if user == post.user %}
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.id %}'"> Effacer </button>
+            <br>
+        {% endif %}
+{% endif %}
+{% endfor %}
