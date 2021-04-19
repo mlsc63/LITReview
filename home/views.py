@@ -20,17 +20,14 @@ def home(request):
     ticket = Ticket.objects.filter(user__in=friend)
     ticket = ticket.filter(user__in=friend, review__ticket__isnull=True)
     ticket = ticket.annotate(content_type=Value('TICKET', CharField()))
-    print(ticket)
+
 
     ticket2 = Ticket.objects.filter(user__in=friend)
     reviews_and_ticket = Review.objects.filter(ticket__in=ticket2)
 
-    for test in reviews_and_ticket:
-        get_ticket = Ticket.objects.filter(id=test.id)
-        print(get_ticket)
-        test = {'ticket': get_ticket}
-        print(test)
-
+    for add_ticket in reviews_and_ticket:
+        get_ticket = Ticket.objects.filter(id=add_ticket.id)
+        add_ticket = {'ticket': get_ticket}
     reviews_and_ticket = reviews_and_ticket.annotate(content_type=Value('REVIEW_TICKET', CharField()))
 
     posts = sorted(
