@@ -2,21 +2,20 @@
 {% load static %}
 {% block content %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'review.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'follow.css' %}">
 
 
 
 <h1 class="block">Recherche</h1>
 <form method="post">
     {% csrf_token %}
-    <label>Recherche d'un utilisateur:</label>
     <input type="text" name="recherche">
     <button class="buttom" type="submit">Soumettre</button>
 </form>
 {% if user_search %}
 <h1 class="block" > Voici les résultats de votre recherche .</h1>
     {% for user in user_search %}
-        {{user}}
+         <h3>{{user}}</h3>
          <button class="buttom" onclick="window.location.href='{% url 'home:add_follow' user.id %}'"> S'abonner </button>
     {% endfor %}
 {% endif %}
@@ -24,8 +23,8 @@
 {% if user_follow %}
 <h1 class="block" > Les utilisateurs que vous suivez.</h1>
    {% for user in user_follow %}
-       {{ user.followed_user.id }}
-       {{ user.followed_user.username }}
+
+       <h3> {{ user.followed_user.username }}</h3>
        <button class="buttom" onclick="window.location.href='{% url 'home:del_follow' user.followed_user.id %}'"> Se désabonner </button>
         <br>
    {% endfor %}
@@ -35,10 +34,9 @@
 {% if followed %}
 <h1 class="block">Les utilisateurs qui vous suivent.</h1>
    {% for user in followed %}
-       {{ user.id }}
-       {{ user.user.username}}
 
-        <br>
+       <h3>{{ user.user.username}}</h3>
+       <br>
    {% endfor %}
 {% endif %}
 

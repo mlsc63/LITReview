@@ -9,23 +9,26 @@
 		{% csrf_token %}
 
 	        {% if ticket %}
-	           <h2>Ticket</h2>
-               <p>{{ ticket.user }} a demandé une critique</p>
-               <p> Titre: {{ ticket.title}}</p>
-	           <p>Commentaire :{{ ticket.description }}</p>
+	           <div id="ticket">
+	               <h2>Ticket</h2>
+                   <p>{{ ticket.user }} a demandé une critique</p>
+                   <p> Titre: {{ ticket.title}}</p>
+	               <p>Commentaire :{{ ticket.description }}</p>
 
-               {% if ticket.image %}
-                  <p><img src="{{ticket.image.url}}"  style="width: 200px; height: 200px;"></p>
-               {% endif %}
+                   {% if ticket.image %}
+                      <p><img src="{{ticket.image.url}}"  style="width: 200px; height: 200px;"></p>
+                   {% endif %}
 
-               {{ ticket.time_created }}
+                   {{ ticket.time_created }}
 
-               {% if user == ticket.user %}
-	              <br>
-	              <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_ticket' ticket.id %}'"> Modifier </button>
-                  <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_ticket' ticket.id %}'"> Effacer </button>
-                  <br>
-               {% endif %}
+                   {% if user == ticket.user %}
+	                  <br>
+	                  <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_ticket' ticket.id %}'"> Modifier </button>
+                      <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_ticket' ticket.id %}'"> Effacer </button>
+                      <br>
+
+				   {% endif %}
+				</div>
             {% endif %}
 
 	        {{ form1.title.label_tag }}<br>
