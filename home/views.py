@@ -2,8 +2,7 @@ from django.contrib.auth.decorators import login_required
 from review.models import Review
 from ticket.models import Ticket
 from user_follows.models import UserFollows
-
-
+from django.db.models import F
 
 from itertools import chain
 from django.db.models import CharField, Value
@@ -15,16 +14,21 @@ def home(request):
     friends = UserFollows.objects.filter(user=request.user).select_related("followed_user")
     friend = [user.followed_user for user in friends]
     friend.append(request.user)
+    print(friend)
 
-    ticket = Ticket.objects.filter(user__in=friend, review__ticket__isnull=True )
+    # ticket seul
+    ticket = Ticket.objects.filter(user__in=friend)
+    ticket = ticket.filter(user__in=friend, review__ticket__isnull=True)
     ticket = ticket.annotate(content_type=Value('TICKET', CharField()))
-
-    review = Review.objects.filter(user__in=friend)
-    review = review.annotate(content_type=Value('REVIEW', CharField()))
-
     print(ticket)
+
+    ticket2 = Ticket.objects.filter(user__in=friend)
+    reviews_and_ticket = Review.objects.filter(ticket__in=ticket2)
+    reviews_and_ticket = reviews_and_ticket.annotate(content_type=Value('REVIEW', CharField()))
+    print(reviews_and_ticket)
+
     posts = sorted(
-        chain(review, ticket),
+        chain(ticket, reviews_and_ticket),
         key=lambda post: post.time_created,
         reverse=True
     )

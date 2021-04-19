@@ -4,10 +4,11 @@ from .forms import ReviewForm
 from ticket.forms import TicketForm
 from django.http import HttpResponse
 from .models import Review
+from ticket.models import Ticket
 
 @login_required(login_url='/account/login')
 
-def add_review(request, review_id_edit=False, review_id_del=False):
+def add_review(request, review_id_edit=False, review_id_del=False, review_id_add=False):
     # Modifier une review
     if review_id_edit:
         review = Review.objects.get(id=review_id_edit)
@@ -24,6 +25,21 @@ def add_review(request, review_id_edit=False, review_id_del=False):
         review = Review.objects.get(id=review_id_del)
         review.delete()
         return redirect('/')
+
+    if review_id_add:
+        ticket = Ticket.objects.get(id=review_id_add)
+
+        form2 = ReviewForm()
+        if request.method == 'POST':
+            form2 = ReviewForm(request.POST)
+            if form2.is_valid():
+                form2.ticket = ticket
+                form2.save()
+                return redirect('/')
+        context = {'form2': form2, 'ticket': ticket}
+        return render(request, 'review.html', context)
+
+
 
 
     # Créer une review et son ticket

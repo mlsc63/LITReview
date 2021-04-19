@@ -5,7 +5,7 @@ from .forms import TicketForm
 from .models import Ticket
 
 @login_required(login_url='/account/login')
-def ticket(request, ticket_id_edit=False, ticket_id_del=False ):
+def ticket(request, ticket_id_edit=False, ticket_id_del=False) :
 
     if ticket_id_edit:
         ticket = Ticket.objects.get(id=ticket_id_edit)
@@ -17,7 +17,6 @@ def ticket(request, ticket_id_edit=False, ticket_id_del=False ):
                 return redirect('/')
         context = {'form': form}
         return render(request, 'ticket.html', context)
-
 
 
     if ticket_id_del:
