@@ -26,7 +26,7 @@
    {% for user in user_follow %}
        {{ user.followed_user.id }}
        {{ user.followed_user.username }}
-       <button class="buttom" onclick="window.location.href='{% url 'hom:del_follow' user.followed_user.id %}'"> Se désabonner </button>
+       <button class="buttom" onclick="window.location.href='{% url 'home:del_follow' user.followed_user.id %}'"> Se désabonner </button>
         <br>
    {% endfor %}
 {% endif %}
