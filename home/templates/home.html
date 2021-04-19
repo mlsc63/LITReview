@@ -14,6 +14,8 @@
 
     {% if post.content_type == 'REVIEW' %}
         <h2>Review</h2>
+
+
         {% if user == post.user %}
            <p>Vous avez écrit une review</p>
         {% elif  user != post.user %}
@@ -25,6 +27,7 @@
         <p>Note: {{ post.rating }}</p>
         <p>Date de création: {{ post.time_created }}</p>
         <br>
+
         {% if user == post.user %}
             <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
             <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
@@ -47,14 +50,46 @@
         {% endif %}
         {{ post.time_created }}
         <br>
-        {% if user != post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:review' %}'"> Créer une critique </button>
-        {% endif %}
+        <button class="buttom buttom2" onclick="window.location.href='{% url 'review:add_review' post.id %}'"> Ajouter une critique </button>
         {% if user == post.user %}
             <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.id %}'"> Modifier </button>
             <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.id %}'"> Effacer </button>
             <br>
         {% endif %}
+
+
+    {% elif post.content_type == 'REVIEW_TICKET' %}
+        <h2>Review</h2>
+        <p>{{ post.ticket.user }} a écrit un ticket</p>
+        <p> Titre: {{ post.ticket.title}}</p>
+        <p>Commentaire :{{ post.ticket.description }}</p>
+        {% if post.ticket.image %}
+            <p><img src="{{post.ticket.image.url}}"  style="width: 200px; height: 200px;"></p>
+        {% endif %}
+        {{ post.ticket.time_created }}
+        <br>
+        {% if user == post.ticket.user %}
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.ticket.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.ticket.id %}'"> Effacer </button>
+            <br>
+        {% endif %}
+        {% if user == post.user %}
+           <p>Vous avez écrit une review</p>
+        {% elif  user != post.user %}
+           <p>{{ post.user }} a écrit une review</p>
+        {% endif %}
+
+        <p>Titre : {{ post.headline }}</p>
+        <p>Commentaire: {{ post.body }}</p>
+        <p>Note: {{ post.rating }}</p>
+        <p>Date de création: {{ post.time_created }}</p>
+        <br>
+        {% if user == post.user %}
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
+            <br>
+        {% endif %}
+
 
 
 

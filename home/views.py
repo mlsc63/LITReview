@@ -24,8 +24,14 @@ def home(request):
 
     ticket2 = Ticket.objects.filter(user__in=friend)
     reviews_and_ticket = Review.objects.filter(ticket__in=ticket2)
-    reviews_and_ticket = reviews_and_ticket.annotate(content_type=Value('REVIEW', CharField()))
-    print(reviews_and_ticket)
+
+    for test in reviews_and_ticket:
+        get_ticket = Ticket.objects.filter(id=test.id)
+        print(get_ticket)
+        test = {'ticket': get_ticket}
+        print(test)
+
+    reviews_and_ticket = reviews_and_ticket.annotate(content_type=Value('REVIEW_TICKET', CharField()))
 
     posts = sorted(
         chain(ticket, reviews_and_ticket),

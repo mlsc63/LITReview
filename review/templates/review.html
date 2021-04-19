@@ -21,8 +21,9 @@
                {{ ticket.time_created }}
 
                {% if user == ticket.user %}
-	              <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.id %}'"> Modifier </button>
-                  <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.id %}'"> Effacer </button>
+	              <br>
+	              <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' ticket.id %}'"> Modifier </button>
+                  <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' ticket.id %}'"> Effacer </button>
                   <br>
                {% endif %}
             {% endif %}

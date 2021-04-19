@@ -28,7 +28,6 @@ def add_review(request, review_id_edit=False, review_id_del=False, review_id_add
 
     if review_id_add:
         ticket = Ticket.objects.get(id=review_id_add)
-
         form2 = ReviewForm()
         if request.method == 'POST':
             form2 = ReviewForm(request.POST)
