@@ -1,20 +1,28 @@
-{% for post in posts %}
-{% if post.content_type == 'TICKET' %}
-       <h2>Ticket</h2>
-        <p>{{ post.user }} a demandé une critique</p>
-        <p> Titre: {{ post.title}}</p>
-        <p>Commentaire :{{ post.description }}</p>
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
 
-        {% if post.image %}
-            <p><img src="{{post.image.url}}"  style="width: 200px; height: 200px;"></p>
-        {% endif %}
+<link rel="stylesheet" type="text/css" href="{% static 'review.css' %}">
 
-        {{ post.time_created }}
 
-        {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.id %}'"> Effacer </button>
-            <br>
-        {% endif %}
-{% endif %}
-{% endfor %}
+
+<h1 class="block">Crée un ticket</h1>
+
+<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+
+			{{ form.title.label_tag }}<br>
+			{{ form.title }} <br>
+		    {{ form.description.label_tag }}<br>
+		    {{ form.description }} <br>
+		    {{ form.image.label_tag }}<br>
+		    {{ form.image }} <br>
+		    {% for error in form.errors %}
+		        <p id="error"> {{ error }} n'est pas valide.</p>
+		    {% endfor %}
+
+
+		<button class="buttom" type="submit">Soumettre</button>
+</form>
+
+{% endblock %}

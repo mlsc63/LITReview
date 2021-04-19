@@ -16,8 +16,8 @@
             <ol>
                 <li class="nav"><a href="{% url 'home:home' %}">Flux</a></li>
                 <li class="nav"><a href="{% url 'home:post' %}">Posts</a></li>
-                <li class="nav"><a href="{% url 'follow:display_user' %}">Abonnements</a></li>
-                <li class="nav"><a href="{% url 'account:logout' %}">Se déconnecter</a></li>
+                <li class="nav"><a href="{% url 'home:display_user' %}">Abonnements</a></li>
+                <li class="nav"><a href="{% url 'home:logout' %}">Se déconnecter</a></li>
             </ol>
         </div>
         {% endif %}

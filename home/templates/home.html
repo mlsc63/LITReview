@@ -5,8 +5,8 @@
 <link rel="stylesheet" type="text/css" href="{% static 'home.css' %}">
 <div id="section">
     <div id="section_btn">
-        <button class="buttom buttom1" onclick="window.location.href='{% url 'ticket:ticket' %}'"> Demander une critique </button>
-        <button class="buttom buttom2" onclick="window.location.href='{% url 'review:review' %}'"> Créer une critique </button>
+        <button class="buttom buttom1" onclick="window.location.href='{% url 'home:ticket' %}'"> Demander une critique </button>
+        <button class="buttom buttom2" onclick="window.location.href='{% url 'home:review' %}'"> Créer une critique </button>
     </div>
 </div>
 
@@ -29,8 +29,8 @@
         <br>
 
         {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_review' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_review' post.id %}'"> Effacer </button>
             <br>
         {% endif %}
 
@@ -50,10 +50,10 @@
         {% endif %}
         {{ post.time_created }}
         <br>
-        <button class="buttom buttom2" onclick="window.location.href='{% url 'review:add_review' post.id %}'"> Ajouter une critique </button>
+        <button class="buttom buttom2" onclick="window.location.href='{% url 'home:add_review' post.id %}'"> Ajouter une critique </button>
         {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.id %}'"> Effacer </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_ticket' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_ticket' post.id %}'"> Effacer </button>
             <br>
         {% endif %}
 
@@ -69,8 +69,8 @@
         {{ post.ticket.time_created }}
         <br>
         {% if user == post.ticket.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.ticket.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.ticket.id %}'"> Effacer </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_ticket' post.ticket.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_ticket' post.ticket.id %}'"> Effacer </button>
             <br>
         {% endif %}
         {% if user == post.user %}
@@ -85,8 +85,8 @@
         <p>Date de création: {{ post.time_created }}</p>
         <br>
         {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_review' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_review' post.id %}'"> Effacer </button>
             <br>
         {% endif %}
 

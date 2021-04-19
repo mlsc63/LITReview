@@ -17,7 +17,7 @@
 <h1 class="block" > Voici les résultats de votre recherche .</h1>
     {% for user in user_search %}
         {{user}}
-         <button class="buttom" onclick="window.location.href='{% url 'follow:add_follow' user.id %}'"> S'abonner </button>
+         <button class="buttom" onclick="window.location.href='{% url 'home:add_follow' user.id %}'"> S'abonner </button>
     {% endfor %}
 {% endif %}
 
@@ -26,7 +26,7 @@
    {% for user in user_follow %}
        {{ user.followed_user.id }}
        {{ user.followed_user.username }}
-       <button class="buttom" onclick="window.location.href='{% url 'follow:del_follow' user.followed_user.id %}'"> Se désabonner </button>
+       <button class="buttom" onclick="window.location.href='{% url 'hom:del_follow' user.followed_user.id %}'"> Se désabonner </button>
         <br>
    {% endfor %}
 {% endif %}

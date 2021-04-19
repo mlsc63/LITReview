@@ -36,10 +36,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ticket',
-    'review',
-    'user_follows',
-    'account',
     'home',
 
 ]
@@ -127,7 +123,7 @@ STATICFILES_DIRS = [
     path.join(BASE_DIR, "static"),
     "static/",
 ]
-AUTH_USER_MODEL = "account.Account"
+AUTH_USER_MODEL = "home.Account"
 MEDIA_ROOT = path.join(BASE_DIR, "images")
 MEDIA_URL = '/images/'
 

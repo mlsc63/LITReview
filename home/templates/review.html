@@ -1,19 +1,55 @@
-{% if post.content_type == 'REVIEW' %}
-        <h2>Review</h2>
-        {% if user == post.user %}
-           <p>Vous avez écrit une review</p>
-        {% elif  user != post.user %}
-           <p>{{ post.user }} a écrit une review</p>
-        {% endif %}
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
 
-        <p>Titre :{{ post.headline }}</p>
-        <p>Commentaire: {{ post.body }}</p>
-        <p>Note: {{ post.rating }}</p>
-        <p>Date de création: {{ post.time_created }}</p>
+<link rel="stylesheet" type="text/css" href="{% static 'review.css' %}">
+<h1 class="block">Review</h1>
 
-        {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
-            <br>
-        {% endif %}
-{% endif %}
+<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+
+	        {% if ticket %}
+	           <h2>Ticket</h2>
+               <p>{{ ticket.user }} a demandé une critique</p>
+               <p> Titre: {{ ticket.title}}</p>
+	           <p>Commentaire :{{ ticket.description }}</p>
+
+               {% if ticket.image %}
+                  <p><img src="{{ticket.image.url}}"  style="width: 200px; height: 200px;"></p>
+               {% endif %}
+
+               {{ ticket.time_created }}
+
+               {% if user == ticket.user %}
+	              <br>
+	              <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_ticket' ticket.id %}'"> Modifier </button>
+                  <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_ticket' ticket.id %}'"> Effacer </button>
+                  <br>
+               {% endif %}
+            {% endif %}
+
+	        {{ form1.title.label_tag }}<br>
+			{{ form1.title }} <br>
+		    {{ form1.description.label_tag }}<br>
+		    {{ form1.description }} <br>
+		    {{ form1.image.label_tag }}<br>
+		    {{ form1.image }} <br>
+		    {% for error in form1.errors %}
+		        <p id="error"> {{ error }} n'est pas valide.</p>
+		    {% endfor %}
+
+			{{ form2.rating.label_tag }}<br>
+			{{ form2.rating }} <br>
+		    {{ form2.headline.label_tag }}<br>
+		    {{ form2.headline }} <br>
+		    {{ form2.body.label_tag }}<br>
+		    {{ form2.body }} <br>
+		    {% for error in form2.errors %}
+		        <p id="error"> {{ error }} n'est pas valide.</p>
+		    {% endfor %}
+
+
+		<button class="buttom" type="submit">Soumettre</button>
+	</form>
+
+{% endblock %}

@@ -22,8 +22,8 @@
         <p>Date de création: {{ post.time_created }}</p>
         <br>
         {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:edit_review' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'review:del_review' post.id %}'"> Effacer </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_review' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_review' post.id %}'"> Effacer </button>
             <br>
         {% endif %}
 
@@ -44,8 +44,8 @@
         {{ post.time_created }}
         <br>
         {% if user == post.user %}
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:edit_ticket' post.id %}'"> Modifier </button>
-            <button class="buttom buttom2" onclick="window.location.href='{% url 'ticket:del_ticket' post.id %}'"> Effacer </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:edit_ticket' post.id %}'"> Modifier </button>
+            <button class="buttom buttom2" onclick="window.location.href='{% url 'home:del_ticket' post.id %}'"> Effacer </button>
             <br>
         {% endif %}
 
