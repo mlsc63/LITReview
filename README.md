@@ -18,6 +18,7 @@ La base de données est gérée par sqlite, un superuser est déjà crée :
 4) Installez les paquets avec la commande : pip install -r requirements.txt
 5) Dématrage du serveur: manage.py runserver.
 
+#English 
 
 LITReview's objective is to market a product allowing a community of users to consult or request a book review on demand.
 It is possible to follow users, to assign a review on a friend request.
