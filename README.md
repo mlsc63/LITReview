@@ -32,7 +32,7 @@ La base de données est gérée par sqlite, un superuser est déjà crée :
 2) Créez un environnement avec la commande : python -m venv env
 3) Activez votre environnement avec la commande : env\Scripts\activate
 4) Installez les paquets avec la commande : pip install -r requirements.txt
-5) Dématrage du serveur: manage.py runserver.
+5) Démarrage du serveur: manage.py runserver.
 
 
  
