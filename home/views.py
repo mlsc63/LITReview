@@ -145,8 +145,10 @@ def add_review(request, review_id_edit=False, review_id_del=False, review_id_add
         if request.method == 'POST':
             form2 = ReviewForm(request.POST)
             if form2.is_valid():
-                form2.ticket = ticket
-                form2.save()
+                set_review = form2.save(commit=False)
+                set_review.ticket = ticket
+                set_review.user = request.user
+                set_review.save()
                 return redirect('/')
         context = {'form2': form2, 'ticket': ticket}
         return render(request, 'review.html', context)
